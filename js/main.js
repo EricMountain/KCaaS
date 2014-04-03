@@ -21,23 +21,19 @@ $(function() {
         google: { families: [ 'Raleway:800:latin' ] }
     });
 
-    for (var i = 0; i < lines.length; i++) {
-        $(".kc")
-            .eq(i)
-            .html(lines[i]);
-    }
-
     for (var j = 0; j < lines.length; j++) {
-        var param = $.url().param((j + 1).toString()).toUpperCase();
+        var param = $.url().param((j + 1).toString());
         
         if (param) {
-            $(".kc")
-                .eq(j)
-                .html(param);
-
-            // NB - Whitespace is counted as a letter
-            maxLineLength = Math.max(param.length, maxLineLength);
+            lines[j] = param.toUpperCase();
         }
+
+        $(".kc")
+            .eq(j)
+            .html(lines[j]);
+
+        // Whitespace is counted as a letter
+        maxLineLength = Math.max(lines[j].length, maxLineLength);
     }
 
     //var style = window.getComputedStyle($(".kc").eq(0)[0], null).getPropertyValue('font-size');
@@ -46,6 +42,8 @@ $(function() {
     var marginWidth = pageWidth * marginPct / 100;
     var marginHeight = pageHeight * marginPct / 100;
 
+    // Decide how tall the crown will be and resize, then include in font size calculation
+
     var usableWidth = pageWidth - marginWidth * 2 - (maxLineLength - 1) * interLetter;
     var usableHeight = pageHeight - marginHeight * 2 - (nbLines - 1) * interLine;
 
@@ -53,6 +51,7 @@ $(function() {
                                   usableHeight / nbLines);
 
     // fixme - need to redo this on page resize
+    $("#keep-calm").css("margin-top", marginHeight);
     $(".kc").css("font-size", targetFontSize);
     $(".kc").css("line-height", interLine);
 
