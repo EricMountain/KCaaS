@@ -3,22 +3,20 @@ $(function() {
     var lines = [ "KEEP", "CALM", "AND", "CARRY", "ON" ];
     var maxLineLength = 0;
     var nbLines = lines.length;
-    var marginPct = 10;
+    var marginPct = 5;
     var marginWidth = 0;
     var marginHeight = 0;
-    var interLine = 0; // fixme
-    var interLetter = 0; // fixme
     var pageWidth = $(window).width();
     var pageHeight = $(window).height();
 
     var params = [ "bg", "fg", "typeface", "graphic" ];
 
     // var WebFontConfig = {
-    //     google: { families: [ 'Raleway:800:latin' ] }
+    //     google: { families: [ 'Raleway:600:latin' ] }
     // };
 
     WebFont.load({
-        google: { families: [ 'Raleway:800:latin' ] }
+        google: { families: [ 'Raleway:700:latin' ] }
     });
 
     for (var j = 0; j < lines.length; j++) {
@@ -42,18 +40,26 @@ $(function() {
     var marginWidth = pageWidth * marginPct / 100;
     var marginHeight = pageHeight * marginPct / 100;
 
-    // Decide how tall the crown will be and resize, then include in font size calculation
+    var usableWidth = pageWidth - marginWidth * 2; // not needed: - (maxLineLength - 1) * interLetter;
+    var usableHeight = pageHeight - marginHeight * 2; // not neede: - (nbLines - 1) * interLine;
 
-    var usableWidth = pageWidth - marginWidth * 2 - (maxLineLength - 1) * interLetter;
-    var usableHeight = pageHeight - marginHeight * 2 - (nbLines - 1) * interLine;
+    // Decide how tall the crown will be and resize, then include in font size calculation
+    var crownPct = 20;
+    var crownHeight = usableHeight * 20 / 100;
+    $("#crown").attr("height", crownHeight);
+
+    var textUsableHeight = usableHeight - crownHeight;
 
     var targetFontSize = Math.min(usableWidth / maxLineLength,
-                                  usableHeight / nbLines);
+                                  textUsableHeight / nbLines);
 
     // fixme - need to redo this on page resize
     $("#keep-calm").css("margin-top", marginHeight);
-    $(".kc").css("font-size", targetFontSize);
-    $(".kc").css("line-height", interLine);
+    $(".kc").css({"font-size": targetFontSize,
+                  "margin-top": 0,
+                  "margin-bottom": 0
+                 });
+    $(".kc").css("line-height", "1em");
 
     console.log(screen.width);
     console.log(screen.height);
