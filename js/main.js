@@ -2,6 +2,7 @@
 // todo - form mode
 // todo - colour
 // todo - alternate graphic
+// todo - allow smaller "and" line. autodetect
 
 $(function() {
 
