@@ -1,3 +1,8 @@
+// todo - suggest full screen display
+// todo - form mode
+// todo - colour
+// todo - alternate graphic
+
 $(function() {
 
     var lines = [ "KEEP", "CALM", "AND", "CARRY", "ON" ];
