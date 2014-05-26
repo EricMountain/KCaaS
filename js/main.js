@@ -17,6 +17,16 @@ $(function() {
 
     var params = [ "bg", "fg", "typeface", "graphic" ];
 
+    var kcaasApp = angular.module('kcaasApp', []);
+
+    kcaasApp.controller('kcaasCtrl', function($scope) {
+	$scope.$apply(function () {
+	    $scope.keepText = "dob";
+	});
+    });
+
+    
+
     // var WebFontConfig = {
     //     google: { families: [ 'Raleway:600:latin' ] }
     // };
@@ -32,9 +42,9 @@ $(function() {
             lines[j] = param.toUpperCase();
         }
 
-        $(".kc")
-            .eq(j)
-            .html(lines[j]);
+        //$(".kc")
+        //    .eq(j)
+        //    .html(lines[j]);
 
         // Whitespace is counted as a letter
         maxLineLength = Math.max(lines[j].length, maxLineLength);

@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body>
+    <body ng-app="kcaasApp">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -24,15 +24,23 @@
         <!-- Add your site or application content here -->
         <div id="keep-calm">
           <object type="image/svg+xml" data="img/Crown.svg" id="crown">Your browser does not support SVG</object>
-          <p class="kc">Keep</p>
+          <p class="kc">{{keepText}}</p>
           <p class="kc">Calm</p>
           <p class="kc">and</p>
           <p class="kc">Carry</p>
           <p class="kc">On</p>
         </div>
 
+	<div id="form">
+	  <form>
+	    <label>Your text:</label>
+	    <input type="text" ng-model="keepText" placeholder="Keep calm and carry on"></input>
+	  </form>
+	</div>
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.7/angular.min.js"></script>
         <script src="js/vendor/purl.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
         <script src="js/plugins.js"></script>
