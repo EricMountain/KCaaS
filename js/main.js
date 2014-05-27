@@ -4,6 +4,16 @@
 // todo - alternate graphic
 // todo - allow smaller "and" line. autodetect
 
+// fixme - right place for this stuff?
+var kcaasApp = angular.module('kcaasApp', []);
+
+// 
+kcaasApp.controller('kcaasCtrl', function($scope) {
+    $scope.keepText = "KEEP";
+});
+
+
+
 $(function() {
 
     var lines = [ "KEEP", "CALM", "AND", "CARRY", "ON" ];
@@ -17,20 +27,11 @@ $(function() {
 
     var params = [ "bg", "fg", "typeface", "graphic" ];
 
-    var kcaasApp = angular.module('kcaasApp', []);
+    //// var WebFontConfig = {
+    ////     google: { families: [ 'Raleway:600:latin' ] }
+    //// };
 
-    kcaasApp.controller('kcaasCtrl', function($scope) {
-	$scope.$apply(function () {
-	    $scope.keepText = "dob";
-	});
-    });
-
-    
-
-    // var WebFontConfig = {
-    //     google: { families: [ 'Raleway:600:latin' ] }
-    // };
-
+    // fixme - need this here to avoid FoUT?
     WebFont.load({
         google: { families: [ 'Raleway:700:latin' ] }
     });
@@ -50,8 +51,8 @@ $(function() {
         maxLineLength = Math.max(lines[j].length, maxLineLength);
     }
 
-    //var style = window.getComputedStyle($(".kc").eq(0)[0], null).getPropertyValue('font-size');
-    //var fontSize = parseFloat(style);
+    ////var style = window.getComputedStyle($(".kc").eq(0)[0], null).getPropertyValue('font-size');
+    ////var fontSize = parseFloat(style);
 
     var marginWidth = pageWidth * marginPct / 100;
     var marginHeight = pageHeight * marginPct / 100;
@@ -67,7 +68,7 @@ $(function() {
     var textUsableHeight = usableHeight - crownHeight;
 
     var targetFontSize = Math.min(usableWidth / maxLineLength,
-                                  textUsableHeight / nbLines);
+                                 textUsableHeight / nbLines);
 
     // fixme - need to redo this on page resize
     $("#keep-calm").css("margin-top", marginHeight);
@@ -81,7 +82,6 @@ $(function() {
     console.log(screen.height);
     console.log($(window).width());
     console.log($(window).height());
-    //console.log(fontSize);
     console.log(targetFontSize);
     console.log(maxLineLength);
     console.log(marginWidth);
