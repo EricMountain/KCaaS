@@ -7,9 +7,33 @@
 // fixme - right place for this stuff?
 var kcaasApp = angular.module('kcaasApp', []);
 
-// 
 kcaasApp.controller('kcaasCtrl', function($scope) {
-    $scope.keepText = "KEEP";
+    $scope.keepText1 = "KEEP";
+    $scope.keepText2 = "CALM";
+    $scope.keepText3 = "AND";
+    $scope.keepText4 = "CARRY";
+    $scope.keepText5 = "ON";
+
+    $scope.change1 = function() {
+        $scope.keepText1 = $scope.keepText1.toUpperCase();
+    };
+
+    $scope.change2 = function() {
+        $scope.keepText2 = $scope.keepText2.toUpperCase();
+    };
+
+    $scope.change3 = function() {
+        $scope.keepText3 = $scope.keepText3.toUpperCase();
+    };
+
+    $scope.change4 = function() {
+        $scope.keepText4 = $scope.keepText4.toUpperCase();
+    };
+
+    $scope.change5 = function() {
+        $scope.keepText5 = $scope.keepText5.toUpperCase();
+    };
+
 });
 
 
