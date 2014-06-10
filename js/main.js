@@ -8,35 +8,20 @@
 var kcaasApp = angular.module('kcaasApp', []);
 
 kcaasApp.controller('kcaasCtrl', function($scope) {
-    $scope.keepText1 = "KEEP";
-    $scope.keepText2 = "CALM";
-    $scope.keepText3 = "AND";
-    $scope.keepText4 = "CARRY";
-    $scope.keepText5 = "ON";
+    $scope.origText = ["KEEP", "CALM", "AND", "CARRY", "ON"];
+    $scope.keepText = $scope.origText;
 
-    $scope.change1 = function() {
-        $scope.keepText1 = $scope.keepText1.toUpperCase();
-    };
-
-    $scope.change2 = function() {
-        $scope.keepText2 = $scope.keepText2.toUpperCase();
-    };
-
-    $scope.change3 = function() {
-        $scope.keepText3 = $scope.keepText3.toUpperCase();
-    };
-
-    $scope.change4 = function() {
-        $scope.keepText4 = $scope.keepText4.toUpperCase();
-    };
-
-    $scope.change5 = function() {
-        $scope.keepText5 = $scope.keepText5.toUpperCase();
+    $scope.change = function(index) {
+        $scope.keepText[index] = $scope.keepText[index].toUpperCase();
+        $scope.keepStyle = ks;
     };
 
 });
 
-
+// yuck 
+//var targetFontSize = 0;
+// Argh.  Why does Angular remove style we set on the .kc elements?????
+var ks = "";
 
 $(function() {
 
@@ -101,6 +86,8 @@ $(function() {
                   "margin-bottom": 0
                  });
     $(".kc").css("line-height", "1em");
+
+    ks = {'font-size': targetFontSize, 'margin-top': 0, 'margin-bottom': 0, 'line-height': '1em'};
 
     console.log(screen.width);
     console.log(screen.height);

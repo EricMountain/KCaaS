@@ -25,21 +25,13 @@
         <!-- Add your site or application content here -->
         <div id="keep-calm">
           <object type="image/svg+xml" data="img/Crown.svg" id="crown">Your browser does not support SVG</object>
-          <p class="kc">{{keepText1}}</p>
-          <p class="kc">{{keepText2}}</p>
-          <p class="kc">{{keepText3}}</p>
-          <p class="kc">{{keepText4}}</p>
-          <p class="kc">{{keepText5}}</p>
+          <p ng-repeat="word in keepText" class="kc" ng-style="keepStyle">{{word}}</p>
         </div>
 
 	<div id="form">
 	  <!-- form -->
 	    <label>Your text:</label>
-	    <input type="text" ng-model="keepText1" ng-change="change1()" placeholder="KEEP"></input>
-	    <input type="text" ng-model="keepText2" ng-change="change2()" placeholder="CALM"></input>
-	    <input type="text" ng-model="keepText3" ng-change="change3()" placeholder="AND"></input>
-	    <input type="text" ng-model="keepText4" ng-change="change4()" placeholder="CARRY"></input>
-	    <input type="text" ng-model="keepText5" ng-change="change5()" placeholder="ON"></input>
+            <input ng-repeat="word in keepText" type="text" ng-model="keepText[$index]" ng-change="change($index)" placeholder="{{origText[$index]}}"></input>
 	  <!-- /form -->
 	</div>
 
