@@ -1,6 +1,7 @@
+// todo - fix loss of focus after typing a letter in the form elements
+// todo - implement URL param mode with Angular
 // todo - suggest full screen display
 // todo - resize dynamically
-// todo - form mode
 // todo - colour
 // todo - alternate graphic
 // todo - allow smaller "and" line. autodetect
