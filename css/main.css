@@ -100,8 +100,6 @@ textarea {
 body {
     background-color: #D00000;
     color: white;
-    font-family: 'Raleway', 'Gill Sans', 'Helvetica', 'sans-serif';
-    /*font-size: 20em;*/
 }
 
 #keep-calm {
@@ -111,16 +109,9 @@ body {
     text-align: center;
 }
 
-
-
-
-
-
-
-
-
-
-
+p.kc {
+    font-family: 'Raleway', 'Gill Sans', 'Helvetica', 'sans-serif';
+}
 
 
 /* ==========================================================================
