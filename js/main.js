@@ -1,27 +1,10 @@
 // todo - suggest full screen display
+// todo - resize dynamically
 // todo - form mode
 // todo - colour
 // todo - alternate graphic
 // todo - allow smaller "and" line. autodetect
 
-// fixme - right place for this stuff?
-var kcaasApp = angular.module('kcaasApp', []);
-
-kcaasApp.controller('kcaasCtrl', function($scope) {
-    $scope.origText = ["KEEP", "CALM", "AND", "CARRY", "ON"];
-    $scope.keepText = $scope.origText;
-
-    $scope.change = function(index) {
-        $scope.keepText[index] = $scope.keepText[index].toUpperCase();
-        $scope.keepStyle = ks;
-    };
-
-});
-
-// yuck 
-//var targetFontSize = 0;
-// Argh.  Why does Angular remove style we set on the .kc elements?????
-var ks = "";
 
 $(function() {
 
@@ -89,6 +72,8 @@ $(function() {
 
     ks = {'font-size': targetFontSize, 'margin-top': 0, 'margin-bottom': 0, 'line-height': '1em'};
 
+
+    // Some debug stuff
     console.log(screen.width);
     console.log(screen.height);
     console.log($(window).width());
@@ -100,6 +85,22 @@ $(function() {
     console.log(usableWidth);
     console.log(usableHeight);
     console.log(maxLineLength);
+
+    // Bootstrap Angular
+    var kcaasApp = angular.module('kcaasApp', []);
+
+    kcaasApp.controller('kcaasCtrl', ['$scope', function($scope) {
+        $scope.origText = ["KEEP", "CALM", "AND", "CARRY", "ON"];
+        $scope.keepText = $scope.origText;
+    
+        $scope.change = function(index) {
+            $scope.keepText[index] = $scope.keepText[index].toUpperCase();
+        };
+    }]);
+
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, ['kcaasApp']);
+    });
 
 });
 
