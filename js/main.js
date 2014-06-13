@@ -1,5 +1,4 @@
-// todo - avoid {{word}} etc flashing before Angular is booted.  Will have to revert to automatic booting of angular at some point anyway if we want to have URL params dealt with by Angular.  Means JQuery will go out the window and the init code needs to move into Angular init phase.
-// todo - implement URL param mode with Angular
+// todo - implement URL param mode with Angular.  Means revert to auto booting Angular?  JQuery goes, and init code moves into Angular init phases?
 // todo - resize dynamically
 // todo - suggest full screen display
 // todo - colour selection
@@ -19,15 +18,6 @@ $(function() {
     var pageHeight = $(window).height();
 
     var params = [ "bg", "fg", "typeface", "graphic" ];
-
-    //// var WebFontConfig = {
-    ////     google: { families: [ 'Raleway:600:latin' ] }
-    //// };
-
-    // fixme - need this here to avoid FoUT?
-    WebFont.load({
-        google: { families: [ 'Raleway:700:latin' ] }
-    });
 
     for (var j = 0; j < lines.length; j++) {
         var param = $.url().param((j + 1).toString());
@@ -105,17 +95,3 @@ $(function() {
 
 });
 
-
-// WebFontConfig = {
-//     google: { families: [ 'Raleway:400,800:latin' ] }
-// };
-
-// (function() {
-//     var wf = document.createElement('script');
-//     wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-//         '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-//     wf.type = 'text/javascript';
-//     wf.async = 'true';
-//     var s = document.getElementsByTagName('script')[0];
-//     s.parentNode.insertBefore(wf, s);
-// })();
