@@ -25,23 +25,15 @@ $(function() {
         if (param) {
             lines[j] = param.toUpperCase();
         }
-
-        //$(".kc")
-        //    .eq(j)
-        //    .html(lines[j]);
-
         // Whitespace is counted as a letter
         maxLineLength = Math.max(lines[j].length, maxLineLength);
     }
 
-    ////var style = window.getComputedStyle($(".kc").eq(0)[0], null).getPropertyValue('font-size');
-    ////var fontSize = parseFloat(style);
-
     var marginWidth = pageWidth * marginPct / 100;
     var marginHeight = pageHeight * marginPct / 100;
 
-    var usableWidth = pageWidth - marginWidth * 2; // not needed: - (maxLineLength - 1) * interLetter;
-    var usableHeight = pageHeight - marginHeight * 2; // not neede: - (nbLines - 1) * interLine;
+    var usableWidth = pageWidth - marginWidth * 2;
+    var usableHeight = pageHeight - marginHeight * 2;
 
     // Decide how tall the crown will be and resize, then include in font size calculation
     var crownPct = 20;
@@ -53,7 +45,6 @@ $(function() {
     var targetFontSize = Math.min(usableWidth / maxLineLength,
                                  textUsableHeight / nbLines);
 
-    // fixme - need to redo this on page resize
     $("#keep-calm").css("margin-top", marginHeight);
     $(".kc").css({"font-size": targetFontSize,
                   "margin-top": 0,
