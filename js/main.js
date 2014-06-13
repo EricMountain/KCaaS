@@ -4,7 +4,7 @@
 // todo - colour selection
 // todo - alternate graphic
 // todo - allow smaller "and" line. autodetect
-
+// todo - avoid showing elements until page disposition has been computed (the crown moves, the form too)
 
 $(function() {
 
