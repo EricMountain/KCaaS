@@ -92,11 +92,11 @@ $(function() {
     var kcaasApp = angular.module('kcaasApp', []);
 
     kcaasApp.controller('kcaasCtrl', ['$scope', function($scope) {
-        $scope.origText = ["KEEP", "CALM", "AND", "CARRY", "ON"];
+        $scope.origText = [{value:"KEEP"}, {value:"CALM"}, {value:"AND"}, {value:"CARRY"}, {value:"ON"}];
         $scope.keepText = $scope.origText;
     
         $scope.change = function(index) {
-            $scope.keepText[index] = $scope.keepText[index].toUpperCase();
+            $scope.keepText[index].value = $scope.keepText[index].value.toUpperCase();
         };
     }]);
 

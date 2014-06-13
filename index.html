@@ -34,13 +34,13 @@
 
         <div id="keep-calm">
           <object type="image/svg+xml" data="img/Crown.svg" id="crown">Your browser does not support SVG</object>
-          <p ng-repeat="word in keepText" class="kc">{{word}}</p>
+          <p ng-repeat="word in keepText" class="kc">{{keepText[$index].value}}</p>
         </div>
 
 	<div id="form">
 	  <!-- form -->
 	    <label>Your text:</label>
-            <input ng-repeat="word in keepText" type="text" ng-model="keepText[$index]" ng-change="change($index)" placeholder="{{origText[$index]}}"></input>
+            <input ng-repeat="word in keepText" type="text" ng-model="keepText[$index].value" ng-change="change($index)" placeholder="{{origText[$index].value}}"></input>
 	  <!-- /form -->
 	</div>
 
