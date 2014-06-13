@@ -1,9 +1,8 @@
-// todo - fix loss of focus after typing a letter in the form elements
 // todo - avoid {{word}} etc flashing before Angular is booted.  Will have to revert to automatic booting of angular at some point anyway if we want to have URL params dealt with by Angular.  Means JQuery will go out the window and the init code needs to move into Angular init phase.
 // todo - implement URL param mode with Angular
-// todo - suggest full screen display
 // todo - resize dynamically
-// todo - colour
+// todo - suggest full screen display
+// todo - colour selection
 // todo - alternate graphic
 // todo - allow smaller "and" line. autodetect
 
