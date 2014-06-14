@@ -69,15 +69,36 @@ $(function() {
     console.log(maxLineLength);
 
     // Bootstrap Angular
-    var kcaasApp = angular.module('kcaasApp', []);
+    var kcaasApp = angular.module('kcaasApp', ['ngRoute']);
 
-    kcaasApp.controller('kcaasCtrl', ['$scope', function($scope) {
+    kcaasApp.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/say/:param1', { controller: 'kcaasCtrl'});
+    }]);
+
+    kcaasApp.controller('kcaasCtrl', ['$scope', '$route', '$routeParams', '$location', function($scope, $route, $routeParams, $location) {
         $scope.origText = [{value:"KEEP"}, {value:"CALM"}, {value:"AND"}, {value:"CARRY"}, {value:"ON"}];
         $scope.keepText = $scope.origText;
     
+        $scope.$routeParams = $routeParams;
+        $scope.$route = $route;
+        $scope.$location = $location;
+
+        render = function() {
+            if ($routeParams.param1) {
+                $scope.keepText[0] = {value:$routeParams.param1};
+        };
+
         $scope.change = function(index) {
             $scope.keepText[index].value = $scope.keepText[index].value.toUpperCase();
         };
+
+        $scope.$on(
+            "$routeChangeSuccess",
+            function( $currentRoute, $previousRoute ){
+                render();
+                
+            }
+        );
     }]);
 
     angular.element(document).ready(function() {
