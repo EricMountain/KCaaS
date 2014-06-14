@@ -48,10 +48,6 @@
 
 	<div id="form">
 	  <!-- form -->
-RP: {{$routeParams}}</br>
-RP1: {{$routeParams.param1}}</br>
-R: {{$route}}</br>
-L: {{$location.path()}}</br>
 	    <label>Your text:</label>
             <input ng-repeat="word in keepText" type="text" ng-model="keepText[$index].value" ng-change="change($index)" placeholder="{{origText[$index].value}}"></input>
 	  <!-- /form -->
