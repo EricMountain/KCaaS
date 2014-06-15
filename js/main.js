@@ -84,7 +84,7 @@ $(function() {
         $scope.$location = $location;
 
         render = function() {
-            if ($routeParams.param1) {
+            if ($routeParams.param1)
                 $scope.keepText[0] = {value:$routeParams.param1};
         };
 
