@@ -72,7 +72,7 @@ $(function() {
     var kcaasApp = angular.module('kcaasApp', ['ngRoute']);
 
     kcaasApp.config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/say/:param1', { controller: 'kcaasCtrl'});
+        $routeProvider.when('/:line1/:line2/:line3/:line4/:line5', { controller: 'kcaasCtrl'});
     }]);
 
     kcaasApp.controller('kcaasCtrl', ['$scope', '$route', '$routeParams', '$location', function($scope, $route, $routeParams, $location) {
@@ -84,8 +84,16 @@ $(function() {
         $scope.$location = $location;
 
         render = function() {
-            if ($routeParams.param1)
-                $scope.keepText[0] = {value:$routeParams.param1};
+            if ($routeParams.line1)
+                $scope.keepText[0] = {value:$routeParams.line1.toUpperCase()};
+            if ($routeParams.line2)
+                $scope.keepText[1] = {value:$routeParams.line2.toUpperCase()};
+            if ($routeParams.line3)
+                $scope.keepText[2] = {value:$routeParams.line3.toUpperCase()};
+            if ($routeParams.line4)
+                $scope.keepText[3] = {value:$routeParams.line4.toUpperCase()};
+            if ($routeParams.line5)
+                $scope.keepText[4] = {value:$routeParams.line5.toUpperCase()};
         };
 
         $scope.change = function(index) {
