@@ -1,4 +1,3 @@
-// todo - implement URL param mode with Angular.  Means revert to auto booting Angular?  JQuery goes, and init code moves into Angular init phases?
 // todo - resize dynamically
 // todo - suggest full screen display
 // todo - colour selection
