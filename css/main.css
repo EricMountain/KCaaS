@@ -109,14 +109,21 @@ body {
     text-align: center;
 }
 
-p.kc {
-    font-family: 'Raleway', 'Gill Sans', 'Helvetica', 'sans-serif';
-}
 
-.wf-loading p.kc {
+.wf-loading .kc-form-text {
     visibility: hidden;
 }
 
+.kc-form-text {
+    width: 100%;
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-family: 'Raleway', 'Gill Sans', 'Helvetica', 'sans-serif';
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 
 /* ==========================================================================
    Helper classes
