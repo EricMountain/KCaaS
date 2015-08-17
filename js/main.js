@@ -7,6 +7,21 @@
 
 $(function() {
 
+    function deepCopy(object) {
+        if (typeof object === 'undefined')
+            return undefined;
+
+        if (object === null || typeof object !== 'object')
+            return object;
+
+        var deepCopyObject = object.constructor();
+        for (var key in object)
+            if (object.hasOwnProperty(key))
+            deepCopyObject[key] = deepCopy(object[key]);
+
+        return deepCopyObject;
+    }
+
     var lines = [ "KEEP", "CALM", "AND", "CARRY", "ON" ];
     var maxLineLength = 0;
     var nbLines = lines.length;
@@ -20,7 +35,7 @@ $(function() {
 
     for (var j = 0; j < lines.length; j++) {
         var param = $.url().param((j + 1).toString());
-        
+
         if (param) {
             lines[j] = param.toUpperCase();
         }
@@ -42,17 +57,14 @@ $(function() {
     var textUsableHeight = usableHeight - crownHeight;
 
     var targetFontSize = Math.min(usableWidth / maxLineLength,
-                                 textUsableHeight / nbLines);
+                                  textUsableHeight / nbLines);
 
     $("#keep-calm").css("margin-top", marginHeight);
     $(".kc").css({"font-size": targetFontSize,
                   "margin-top": 0,
-                  "margin-bottom": 0
-                 });
-    $(".kc").css("line-height", "1em");
-
-    ks = {'font-size': targetFontSize, 'margin-top': 0, 'margin-bottom': 0, 'line-height': '1em'};
-
+                  "margin-bottom": 0,
+                  "line-height": "1em"
+    });
 
     // Some debug stuff
     console.log(screen.width);
@@ -76,13 +88,13 @@ $(function() {
 
     kcaasApp.controller('kcaasCtrl', ['$scope', '$route', '$routeParams', '$location', function($scope, $route, $routeParams, $location) {
         $scope.origText = [{value:"KEEP"}, {value:"CALM"}, {value:"AND"}, {value:"CARRY"}, {value:"ON"}];
-        $scope.keepText = $scope.origText;
-    
+        $scope.keepText = deepCopy($scope.origText);
+
         $scope.$routeParams = $routeParams;
         $scope.$route = $route;
         $scope.$location = $location;
 
-        render = function() {
+        var render = function() {
             if ($routeParams.line1)
                 $scope.keepText[0] = {value:$routeParams.line1.toUpperCase()};
             if ($routeParams.line2)
@@ -95,6 +107,14 @@ $(function() {
                 $scope.keepText[4] = {value:$routeParams.line5.toUpperCase()};
         };
 
+        $scope.checkForAnd = function(index) {
+            if (["AND", "ET"].indexOf($scope.keepText[index].value) !== -1) {
+                return {"font-size": targetFontSize * 0.7};
+            } else {
+                return {"font-size": targetFontSize};
+            }
+        };
+
         $scope.change = function(index) {
             $scope.keepText[index].value = $scope.keepText[index].value.toUpperCase();
         };
@@ -103,7 +123,6 @@ $(function() {
             "$routeChangeSuccess",
             function( $currentRoute, $previousRoute ){
                 render();
-                
             }
         );
     }]);
@@ -113,4 +132,3 @@ $(function() {
     });
 
 });
-

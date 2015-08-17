@@ -40,16 +40,15 @@
         <![endif]-->
 
         <!-- Site/application content starts here -->
-
 	<div id="keep-calm">
           <object type="image/svg+xml" data="img/Crown.svg" id="crown">Your browser does not support SVG</object>
-          <input class="kc-form-text kc" ng-repeat="word in keepText" type="text" ng-model="keepText[$index].value" ng-change="change($index)" placeholder="{{origText[$index].value}}"></input>
+          <input class="kc-form-text kc" ng-repeat="word in keepText" type="text" ng-model="keepText[$index].value" ng-change="change($index)" ng-style="checkForAnd($index)" placeholder="{{origText[$index].value}}"></input>
 	</div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script id="angularScript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular-route.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script id="angularScript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
         <script src="js/vendor/purl.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
